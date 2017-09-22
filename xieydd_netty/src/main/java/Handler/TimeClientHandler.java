@@ -81,6 +81,7 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter{
 	 * Netty提供可扩展类对于TimeDecoder
 	 * ByteToMessageDecoder 是 ChannelInboundHandler 的一个实现类，他可以在处理数据拆分的问题上变得很简单
 	 * 当新数据接受的时候会调用decode方法对于数据进行处理内部的累计缓存;当累计缓存李没有足够的数据的时候可以在out对象中放任意的数据，当有更多的数据被接受的时候会继续调用这个方法进行decode
+	 * 如果在decode中添加了out对象，意味着解码器解码成功，将会求其在累计缓存中读取过得数据
 	 * public class TimeDecoder extends ByteToMessageDecoder { // (1)
 			@Override
 			protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) { // (2)
