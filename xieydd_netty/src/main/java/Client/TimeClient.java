@@ -1,5 +1,6 @@
 package Client;
 
+import Decoder.TimeDecoder;
 import Handler.TimeClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -45,7 +46,8 @@ public class TimeClient {
 				@Override
 				protected void initChannel(SocketChannel ch) throws Exception {
 					// TODO Auto-generated method stub
-					ch.pipeline().addLast(new TimeClientHandler());
+					//这里还有更简单的解码类ReployingDecoder看API
+					ch.pipeline().addLast(new TimeDecoder(),new  TimeClientHandler());
 				}
 			});
 			
