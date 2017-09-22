@@ -1,6 +1,7 @@
 package Server;
 
 import Handler.DiscardServerHandler;
+import Handler.TimeServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -56,7 +57,8 @@ public class DiscardServer {
 				@Override
 				protected void initChannel(SocketChannel ch) throws Exception {
 					// TODO Auto-generated method stub
-					ch.pipeline().addLast(new DiscardServerHandler());
+					//将DiscardServerHandler换成TimeServerHandler就变成时间服务器的服务端，配合TimeClient使用
+					ch.pipeline().addLast(new TimeServerHandler());
 				}
 				
 			})
