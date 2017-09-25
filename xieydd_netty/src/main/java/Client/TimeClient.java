@@ -30,7 +30,7 @@ public class TimeClient {
 	public static void main(String[] args) throws Exception{
 		String host = "127.0.0.1";
 		int port = 8080;
-				//Integer.parseInt("8080");
+		//Integer.parseInt("8080");
 		
 		//这里即作为boss group也作为work group
 		EventLoopGroup workGroup = new NioEventLoopGroup();
