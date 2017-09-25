@@ -1,10 +1,12 @@
 package Decoder;
 
-import java.util.List;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -35,6 +37,5 @@ public class TimeDecoder extends ByteToMessageDecoder {
 			return;
 		}
 		out.add(in.readBytes(4));
-		
 	}
 }
