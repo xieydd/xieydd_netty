@@ -1,6 +1,7 @@
 package Server;
 
 import Decoder.TimeDecoder;
+import Encoder.TimeEncoder;
 import Handler.DiscardServerHandler;
 import Handler.TimeServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
@@ -59,7 +60,7 @@ public class DiscardServer {
 				protected void initChannel(SocketChannel ch) throws Exception {
 					// TODO Auto-generated method stub
 					//将DiscardServerHandler换成TimeServerHandler就变成时间服务器的服务端，配合TimeClient使用
-					ch.pipeline().addLast(new TimeServerHandler());
+					ch.pipeline().addLast(new TimeEncoder(),new  TimeServerHandler());
 				}
 				
 			})
@@ -70,6 +71,7 @@ public class DiscardServer {
 			ChannelFuture f = b.bind(port).sync();
 			f.channel().closeFuture().sync();
 		}finally{
+			//当EventLoopGroup 被完全地终止,并且对应的所有 channel 都已经被关闭时，Netty 会返回一个Future对象来通知你
 			workGroup.shutdownGracefully();
 			bossGroup.shutdownGracefully();
 		}
