@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import Pojo.UnixTime;
+
 /**
  * 
 
@@ -36,6 +38,6 @@ public class TimeDecoder extends ByteToMessageDecoder {
 		if (in.readableBytes() < 4) {
 			return;
 		}
-		out.add(in.readBytes(4));
+		out.add(new UnixTime(in.readUnsignedInt()));
 	}
 }
