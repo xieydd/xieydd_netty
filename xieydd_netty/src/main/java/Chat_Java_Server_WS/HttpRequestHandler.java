@@ -31,8 +31,7 @@ import java.net.URL;
 
 * @author xieydd xieydd@gmail.com  
 
-* @date 2017-9-30 обнГ5:01:54 
-
+* @date 2017-9-30 обнГ5:01:55
 *
  */
 public class HttpRequestHandler extends
